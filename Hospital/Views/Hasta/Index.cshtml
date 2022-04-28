@@ -1,0 +1,88 @@
+﻿@using Hospital.Models.Entity
+@model List<Patient>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/HastaLogin.cshtml";
+}
+
+<div align="center"><p><h3>Yozgat Bozok Üniversitesi Hasta Paneli</h3></p> </div>
+
+
+@foreach (var t in Model)
+{
+    <div align="center"><p><h3>Hoş Geldiniz Sayın @t.AD @t.SOYAD </h3></p> </div>
+    <div style="padding-left: 40px">
+        <div class="card">
+            <div class="card-body">
+                <p class="text-uppercase small mb-2">
+                    <strong>Kullanici ID:</strong>
+                </p>
+                <h5 class="mb-0">
+                    <strong>@t.ID.</strong>
+                    <small class="text-success ms-2">
+                    </small>
+                </h5>
+                <hr />
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <p class="text-uppercase small mb-2">
+                    <strong>Türkiye Cumhuriyeti Kimlik Numarası:</strong>
+                </p>
+                <h5 class="mb-0">
+                    <strong>@t.TCNO.</strong>
+                    <small class="text-success ms-2">
+                    </small>
+                </h5>
+                <hr />
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <p class="text-uppercase small mb-2">
+                        <strong>Adres:</strong>
+                    </p>
+                    <h5 class="mb-0">
+                        <strong>@t.ADRES.</strong>
+                        <small class="text-success ms-2">
+                        </small>
+                    </h5>
+                    <hr />
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <p class="text-uppercase small mb-2">
+                        <strong>Mail Adresi:</strong>
+                    </p>
+                    <h5 class="mb-0">
+                        <strong>@t.MAILADRESI.</strong>
+                        <small class="text-success ms-2">
+                        </small>
+                    </h5>
+                    <hr />
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <p class="text-uppercase small mb-2">
+                        <strong>Telefon Numarası:</strong>
+                    </p>
+                    <h5 class="mb-0">
+                        <strong>@t.TELNO.</strong>
+                        <small class="text-success ms-2">
+                        </small>
+                    </h5>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+&nbsp;
+<div style="padding-left:48px">
+    <p>
+
+        Yozgat Bozok Üniversitesi 2022 Sağlık MYO Eğitim Platformu @@
+    </p>
+</div>

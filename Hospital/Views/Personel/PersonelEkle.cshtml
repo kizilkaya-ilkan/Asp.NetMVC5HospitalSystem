@@ -1,0 +1,36 @@
+﻿@model Hospital.Models.Entity.Users
+@{
+    ViewBag.Title = "BirimEkle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="u-form-group" method="post">
+    <div style="padding-left:80px;padding-top:20px">
+        <label>AD</label>
+        @Html.TextBoxFor(t => t.AD, new { @class = "form-control" })
+        <label>SOYAD</label>
+        @Html.TextBoxFor(t => t.SOYAD, new { @class = "form-control" })
+        <label>BÖLÜM </label>
+        @Html.DropDownListFor(t => t.BÖLÜM, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
+        <label>YETKİ DERECESİ</label>
+        @Html.TextBoxFor(t => t.YETKİDERECE, new { @class = "form-control" })
+        <label>ANAHTAR</label>
+        @Html.TextBoxFor(t => t.ANAHTAR, new { @class = "form-control" })
+        <label>GÖREV TANIMI</label>
+        @Html.DropDownListFor(t => t.GÖREVİ, (List<SelectListItem>)ViewBag.dgr4, new { @class = "form-control" })
+        <label>TEL NO</label>
+        @Html.TextBoxFor(t => t.TELNO, new { @class = "form-control" })
+        <label>TC NO</label>
+        @Html.TextBoxFor(t => t.TCNO, new { @class = "form-control" })
+        <label>MAİL ADRES</label>
+        @Html.TextBoxFor(t => t.ADRES, new { @class = "form-control" })
+        <div style="padding-top:10px"></div>
+        <button class="btn btn-info" id="Btn">
+            Bölüm Ekle
+        </button>
+    </div>
+
+</form>
+
+
+

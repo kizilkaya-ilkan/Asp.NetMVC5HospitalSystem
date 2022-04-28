@@ -1,0 +1,22 @@
+﻿@model Hospital.Models.Entity.Birimler
+@{
+    ViewBag.Title = "BirimEkle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class= "u-form-group" method="post">
+    <div style="padding-left:80px;padding-top:20px">
+        <label>Bölüm Adı</label>
+        <input type="text" class="form-control" name="BölümAdi" />
+        <label>Personel Sayısı</label>
+        <input type="text" class="form-control" name="PersonelSayisi" />
+        <label>Açıklama </label>
+        <input type="text" class="form-control" name="Açıklama" />
+        <div style="padding-top:10px"></div>
+        <button class="btn btn-info" id="Btn">
+            Bölüm Ekle
+        </button>
+    </div>
+   
+</form>
+

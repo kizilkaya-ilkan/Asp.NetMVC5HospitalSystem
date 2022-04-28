@@ -1,0 +1,32 @@
+﻿@model Hospital.Models.Entity.BunlarıBiliyormusunuz
+
+@{
+    ViewBag.Title = "Düzenle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("Kaydet", "SiteSetting", FormMethod.Post))
+{
+    <form class="u-form-group" method="post">
+        <div style="padding-left:80px;padding-top:20px">
+
+            @Html.HiddenFor(t => t.ID, new { @class = "form-control" })
+
+            @Html.LabelFor(t => t.SiteAcıklama)
+            @Html.TextBoxFor(t => t.SiteAcıklama, new { @class = "form-control" })
+
+            @Html.LabelFor(t => t.Acıklama)
+            @Html.TextBoxFor(t => t.Acıklama, new { @class = "form-control" })
+
+
+
+            <div style="padding-top:10px"></div>
+            <button class="btn btn-info" id="Btn">
+                Site Ayarlarını Kaydet
+            </button>
+        </div>
+
+    </form>
+}
+
+

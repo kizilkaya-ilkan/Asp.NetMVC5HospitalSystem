@@ -1,0 +1,44 @@
+﻿@model Hospital.Models.Entity.Patient
+@{
+    ViewBag.Title = "HastaGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@using (Html.BeginForm("HastaGüncelle", "HastaTakip", FormMethod.Post))
+{
+    <form class="u-form-group" method="post">
+        <div style="padding-left:80px;padding-top:20px">
+
+            @Html.LabelFor(t => t.ID)
+            @Html.TextBoxFor(t => t.ID, new { @class = "form-control" })
+            @Html.LabelFor(t => t.AD)
+            @Html.TextBoxFor(t => t.AD, new { @class = "form-control" })
+            @Html.LabelFor(t => t.SOYAD)
+            @Html.TextBoxFor(t => t.SOYAD, new { @class = "form-control" })
+            @Html.LabelFor(t => t.TCNO)
+            @Html.TextBoxFor(t => t.TCNO, new { @class = "form-control" })
+            @Html.LabelFor(t => t.Anahtar)
+            @Html.TextBoxFor(t => t.Anahtar, new { @class = "form-control" })
+            @Html.LabelFor(t => t.YETKİ)
+            @Html.TextBoxFor(t => t.YETKİ, new { @class = "form-control" })
+            @Html.LabelFor(t => t.MAILADRESI)
+            @Html.TextBoxFor(t => t.MAILADRESI, new { @class = "form-control" })
+            @Html.LabelFor(t => t.ADRES)
+            @Html.TextBoxFor(t => t.ADRES, new { @class = "form-control" })
+            @Html.LabelFor(t => t.TELNO)
+            @Html.TextBoxFor(t => t.TELNO, new { @class = "form-control" })
+            @Html.LabelFor(t => t.RANDAVUTARIHIGUN)
+            @Html.TextBoxFor(t => t.RANDAVUTARIHIGUN, new { @class = "form-control" })
+            @Html.LabelFor(t => t.RANDAVUTARIHISAAT)
+            @Html.TextBoxFor(t => t.RANDAVUTARIHISAAT, new { @class = "form-control" })
+            @Html.LabelFor(t => t.MuayeneSonucu)
+            @Html.TextBoxFor(t => t.MuayeneSonucu, new { @class = "form-control" })
+
+            <div style="padding-top:10px"></div>
+            <button class="btn btn-info" id="Btn">
+                Bölüm Düzenle
+            </button>
+        </div>
+
+    </form>
+}
+

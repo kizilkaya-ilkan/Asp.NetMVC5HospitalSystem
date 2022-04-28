@@ -1,0 +1,34 @@
+﻿@using Hospital.Models.Entity
+@model List<BunlarıBiliyormusunuz>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div style="padding-left:80px;padding-top:20px">
+    <h2>Site Ayarları</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th> 
+            <th>Hakkımızda Ön Bilgi</th>
+            <th>Site Açıklaması</th>
+            <th>Rapor Durum</th>
+        </tr>
+        @foreach (var ktg in Model)
+        {
+            <tr>
+                <td>@ktg.ID</td>
+                <td>@ktg.Acıklama</td>
+                <td>@ktg.SiteAcıklama</td>
+                
+                <td align="center">
+                    <a href="/SiteSetting/Düzenle/@ktg.ID" class="btn btn-info">Düzenle</a>
+                </td>
+            </tr>
+
+        }
+
+    </table>
+
+</div>
+

@@ -1,0 +1,36 @@
+﻿@model Hospital.Models.Entity.Patient
+
+@{
+    ViewBag.Title = "HastaEkle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="u-form-group" method="post">
+    <div style="padding-left:80px;padding-top:20px">
+        <label>AD</label>
+        @Html.TextBoxFor(t => t.AD, new { @class = "form-control" })
+        <label>SOYAD</label>
+        @Html.TextBoxFor(t => t.SOYAD, new { @class = "form-control" })
+        <label>TC NO </label>
+        @Html.TextBoxFor(t => t.TCNO, new { @class = "form-control" })
+        <label>Anahtar</label>
+        @Html.TextBoxFor(t => t.Anahtar, new { @class = "form-control" })
+        <label>Yetki</label>
+        @Html.TextBoxFor(t => t.YETKİ, new { @class = "form-control" })
+        <label>Mail Adresi</label>
+        @Html.TextBoxFor(t => t.MAILADRESI, new { @class = "form-control" })
+        <label>Adres</label>
+        @Html.TextBoxFor(t => t.ADRES, new { @class = "form-control" })
+        <label>Tel No</label>
+        @Html.TextBoxFor(t => t.TELNO, new { @class = "form-control" })
+        <label>Randavu Tarihi</label>
+        @Html.TextBoxFor(t => t.RANDAVUTARIHIGUN, new { @class = "form-control" })
+        <label>Randavu Saati</label>
+        @Html.TextBoxFor(t => t.RANDAVUTARIHISAAT, new { @class = "form-control" })
+        <div style="padding-top:10px"></div>
+        <button class="btn btn-info" id="Btn">
+            Bölüm Ekle
+        </button>
+    </div>
+
+</form>

@@ -1,0 +1,39 @@
+﻿@model Hospital.Models.Entity.RECETE
+@{
+    ViewBag.Title = "ReceteleriGetir";
+    Layout = "~/Views/Shared/Doctor.cshtml";
+}
+
+@using (Html.BeginForm("ReceteDüzenle", "Recete", FormMethod.Post))
+{
+    <form class="u-form-group" method="post">
+        <div style="padding-left:60px;padding-top:20px">
+
+            @Html.LabelFor(t => t.ID)
+            @Html.TextBoxFor(t => t.ID, new { @class = "form-control" })
+            @Html.LabelFor(t => t.ILAC)
+            @Html.TextBoxFor(t => t.ILAC, new { @class = "form-control" })
+            @Html.LabelFor(t => t.TARIH)
+            @Html.TextBoxFor(t => t.TARIH, new { @class = "form-control" })
+            @Html.LabelFor(t => t.DOKTOR)
+            @Html.TextBoxFor(t => t.DOKTOR, new { @class = "form-control" })
+            @Html.LabelFor(t => t.RECETENO)
+            @Html.TextBoxFor(t => t.RECETENO, new { @class = "form-control" })
+            @Html.LabelFor(t => t.HASTA)
+            @Html.TextBoxFor(t => t.HASTA, new { @class = "form-control" })
+            @Html.LabelFor(t => t.HASTATC)
+            @Html.TextBoxFor(t => t.HASTATC, new { @class = "form-control" })
+            @Html.LabelFor(t => t.MAİLADRES)
+            @Html.TextBoxFor(t => t.MAİLADRES, new { @class = "form-control" })
+
+            <div style="padding-top:10px"></div>
+            <button class="btn btn-info" id="Btn">
+                Düzenle
+            </button>
+        </div>
+
+    </form>
+}
+
+
+

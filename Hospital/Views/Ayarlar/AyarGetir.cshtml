@@ -1,0 +1,33 @@
+﻿@model Hospital.Models.Entity.Users
+
+@{
+    ViewBag.Title = "AyarGetir";
+    Layout = "~/Views/Shared/Doctor.cshtml";
+}
+
+@using (Html.BeginForm("AyarDüzenle", "Ayarlar", FormMethod.Post))
+{
+    <form class="u-form-group" method="post">
+        <div style="padding-left:60px;padding-top:20px">
+
+            @Html.HiddenFor(t => t.ID, new { @class = "form-control" })
+            @Html.LabelFor(t => t.AD)
+            @Html.TextBoxFor(t => t.AD, new { @class = "form-control" })
+            @Html.LabelFor(t => t.SOYAD)
+            @Html.TextBoxFor(t => t.SOYAD, new { @class = "form-control" })
+            @Html.LabelFor(t => t.ANAHTAR)
+            @Html.TextBoxFor(t => t.ANAHTAR, new { @class = "form-control" })
+            @Html.LabelFor(t => t.TELNO)
+            @Html.TextBoxFor(t => t.TELNO, new { @class = "form-control" }) 
+            @Html.LabelFor(t => t.ADRES)
+            @Html.TextBoxFor(t => t.ADRES, new { @class = "form-control" })
+
+            <div style="padding-top:10px"></div>
+            <button class="btn btn-info" id="Btn">
+                Bilgilerimi Düzenle
+            </button>
+        </div>
+
+    </form>
+}
+

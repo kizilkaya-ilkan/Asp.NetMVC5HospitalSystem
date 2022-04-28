@@ -1,0 +1,43 @@
+﻿@using Hospital.Models.Entity
+@model List<Birimler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<div align="center" style="padding-left: 80px ">
+    <div style="padding-top:20px">
+        <h2>Hastane Bölümleri </h2>
+    </div>
+
+    <table class="table table-bordered" style="padding-top:40px">
+        <tr>
+            <th>ID</th>
+            <th>AD</th>
+            <th>Personel Sayısı</th>
+            <th>Açıklama</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+        </tr>
+        @foreach (var ktg in Model)
+        {
+            <tr>
+                <td>@ktg.ID</td>
+                <td>@ktg.BölümAdi</td>
+                <td>@ktg.PersonelSayisi</td>
+                <td>@ktg.Açıklama</td>
+                <td align="center">
+                    <a href="/birimler/BirimSil/@ktg.ID" class="btn btn-danger">Sil</a>
+                </td>
+                <td align="center">
+                    <a href="/birimler/BirimGetir/@ktg.ID" class="btn btn-warning">Güncelle</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div style="padding-left: 80px">
+    <a href="/birimler/BirimEkle/" class="btn btn-primary">Yeni Bölüm Ekle</a>
+</div>
+

@@ -1,0 +1,27 @@
+﻿@model Hospital.Models.Entity.RECETE
+@{
+    ViewBag.Title = "ReceteYaz";
+Layout = "~/Views/Shared/Doctor.cshtml";
+}
+
+<form class="u-form-group" method="post">
+    <div style="padding-left:80px;padding-top:20px">
+
+        @Html.HiddenFor(t => t.ID)
+        <label>İLAÇ</label>
+        @Html.TextAreaFor(t => t.ILAC, new { @class = "form-control" })
+        <label>HASTA</label>
+        @Html.DropDownListFor(t => t.HASTA, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
+        <label>HASTA TC</label>
+        @Html.TextBoxFor(t => t.HASTATC, new { @class = "form-control" })
+        <label>MAİL ADRES</label>
+        @Html.TextBoxFor(t => t.MAİLADRES, new { @class = "form-control" })
+
+        <div style="padding-top:10px"></div>
+        <button class="btn btn-info" id="Btn">
+            Reçete Ekle
+        </button>
+    </div>
+
+</form>
+

@@ -1,0 +1,53 @@
+﻿@using Hospital.Models.Entity
+@model List<DEPO>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div align="center" style="padding-left: 80px ">
+    <div style="padding-top:20px">
+        <h2>DEPO Veritabanı </h2>
+    </div>
+
+    @using (Html.BeginForm("Index", "Depo", FormMethod.Get))
+    {
+        <div style="margin-bottom:15px; margin-top:15px; float:left">
+            <b>Aranacak ilaç ismini Giriniz!</b> @Html.TextBox("p")
+            <input type="submit" value="Ara" />
+        </div>
+    }
+
+    <table class="table table-bordered" style="padding-top:40px" align="center">
+        
+        <tr>
+            <th>ID</th>
+            <th>URUN ADI</th>
+            <th>URUN AÇIKLAMASI</th>
+            <th>STOK</th>
+            <th>ISLEMLER</th>
+        </tr>
+
+        @foreach (var ktg in Model)
+        {
+    <tr>
+        <td>@ktg.ID</td>
+        <td>@ktg.URUNADI</td>
+        <td>@ktg.URUNACIKLAMASI</td>
+        <td>@ktg.STOK</td>
+
+        <td align="center">
+            <a href="/Depo/DepoSil/@ktg.ID" class="btn btn-danger">Sil</a>
+            <a href="/Depo/DepoGetir/@ktg.ID" class="btn btn-warning">Güncelle</a>
+        </td>
+    </tr>
+        }
+
+    </table>
+</div>
+<div style="padding-left: 80px">
+    <a href="/Depo/DepoEkle/" class="btn btn-primary">Yeni İlaç Ekle</a>
+</div>
+
+
+

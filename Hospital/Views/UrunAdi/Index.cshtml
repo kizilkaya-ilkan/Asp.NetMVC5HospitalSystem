@@ -1,0 +1,48 @@
+﻿@using Hospital.Models.Entity
+@model List<IlacListe>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div align="center" style="padding-left: 80px ">
+    <div style="padding-top:20px">
+        <h2>İlaç Veritabanı </h2>
+    </div>
+
+    @using (Html.BeginForm("Index", "UrunAdi", FormMethod.Get))
+    {
+        <div style="margin-bottom:15px; margin-top:15px; float:left">
+            <b>Aranacak ilaç ismini Giriniz!</b> @Html.TextBox("p")
+            <input type="submit" value="Ara" />
+        </div>
+    }
+
+    <table class="table table-bordered" style="padding-top:40px" align="center">
+
+        <tr>
+            <th>ID</th>
+            <th>URUN ADI</th> 
+            <th>ISLEMLER</th>
+        </tr>
+
+        @foreach (var ktg in Model)
+        {
+            <tr>
+                <td>@ktg.ID</td>
+                <td>@ktg.UrunAdi</td>
+
+
+                <td align="left">
+                    <a href="/UrunAdi/SilIlac/@ktg.ID" class="btn btn-danger">Sil</a>
+                    <a href="/UrunAdi/GetirIlac/@ktg.ID" class="btn btn-warning">Güncelle</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div style="padding-left: 80px">
+    <a href="/UrunAdi/EkleIlac/" class="btn btn-primary">Yeni İlaç Ekle</a>
+</div>
+

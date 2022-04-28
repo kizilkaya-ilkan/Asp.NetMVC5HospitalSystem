@@ -1,0 +1,45 @@
+﻿@using Hospital.Models.Entity
+@model List<Mesaj>
+@{
+    ViewBag.Title = "AdminMesaj";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div style="padding-left:80px;padding-top:20px">
+    <h2>Gelen Rapor</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>Gönderen</th>
+            <th>Hasta</th>
+            <th>Konu</th>
+            <th>Mesaj</th>
+            <th>Tarih</th>
+            <th>Rapor Durum</th>
+            <th>Dökümanlar</th>
+        </tr>
+        @foreach (var ktg in Model)
+        {
+            <tr>
+                <td>@ktg.GÖNDEREN</td>
+                <td>@ktg.HASTA</td>
+                <td>@ktg.KONU</td>
+                <td>@ktg.MESAJ1</td>
+                <td>@ktg.TARIH</td>
+                <td>@ktg.ISLEM</td>
+                <td>@ktg.Sonuc</td>
+
+                <td align="center">
+                    <a href="/Admin/MesajSil/@ktg.ID" class="btn btn-danger">Sil</a>
+                </td>
+                <td align="center">
+                    <a href="/Admin/MesajGetir/@ktg.ID" class="btn btn-info">Düzenle</a>
+                </td>
+            </tr>
+
+        }
+
+    </table>
+</div>
+<div style="padding-left: 80px">
+    <a href="/Admin/YeniMesaj/" class="btn btn-dark">Yeni Bölüm Ekle</a>
+</div>

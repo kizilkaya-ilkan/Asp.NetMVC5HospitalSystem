@@ -1,0 +1,35 @@
+﻿@using Hospital.Models.Entity
+@model List<tCalendar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/HastaLogin.cshtml";
+}
+
+<div style="padding-left:120px;padding-top:20px">
+    <h2>Randavularımı Görüntüle</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Hasta TC</th>
+            <th>Randavu Tarihi</th>
+            <th>Birim</th>
+            <th>İşlemler</th>
+        </tr>
+        @foreach (var ktg in Model)
+        {
+            <tr>
+                <td>@ktg.IDCalendar</td>
+                <td>@ktg.Title</td>
+                <td>@ktg.StartDate</td>
+                <td>@ktg.Color</td>
+
+                <td align="center">
+                    <a href="/DoktorGörüntüle/RandavuSil/@ktg.IDCalendar" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+
+        }
+
+    </table>
+
+</div>

@@ -1,0 +1,31 @@
+﻿@using Hospital.Models.Entity
+@model List<Mesaj>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/HastaLogin.cshtml";
+}
+
+<div style="padding-left:80px;padding-top:20px">
+    <h2>Mesajlarım</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>Gönderen</th>
+            <th>Konu</th>
+            <th>Mesaj</th>
+            <th>Tarih</th>  
+        </tr>
+        @foreach (var ktg in Model)
+        {
+            <tr>
+                <td>@ktg.GÖNDEREN</td>
+                <td>@ktg.KONU</td>
+                <td>@ktg.MESAJ1</td>
+                <td>@ktg.TARIH</td>
+            </tr>
+
+        }
+
+    </table>
+
+</div>
+

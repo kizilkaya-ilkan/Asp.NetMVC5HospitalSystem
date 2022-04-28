@@ -1,0 +1,56 @@
+﻿@using Hospital.Models.Entity
+@model List<Patient>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div align="center" style="padding-left: 80px ">
+    <div style="padding-top:20px">
+        <h2>Hasta Takip </h2>
+    </div>
+
+    <table class="table table-bordered" style="padding-top:40px">
+        <tr>
+            <th>ID</th>
+            <th>AD</th>
+            <th>SOYAD</th>
+            <th>TC NO</th>
+            <th>YETKİ</th>
+            <th>MAİL ADRESİ</th>
+            <th>ADRES</th>
+            <th>TEL NO</th>
+            <th>TARİH</th>
+            <th>SAAT</th>
+            <th>Muayene Durum</th>
+            <th>Muayene Düzenle</th>
+
+        </tr>
+        @foreach (var hasta in Model)
+        {
+    <tr>
+        <td>@hasta.ID</td>
+        <td>@hasta.AD</td>
+        <td>@hasta.SOYAD</td>
+        <td>@hasta.TCNO</td>
+        <td>@hasta.YETKİ</td>
+        <td>@hasta.MAILADRESI</td>
+        <td>@hasta.ADRES</td>
+        <td>@hasta.TELNO</td>
+        <td>@hasta.RANDAVUTARIHIGUN</td>
+        <td>@hasta.RANDAVUTARIHISAAT</td>
+        <td align="center">
+            <a href="/HastaTakip/HastaSil/@hasta.ID" class="btn btn-danger">Sil</a>
+        </td>
+        <td align="center">
+            <a href="/HastaTakip/HastaGetir/@hasta.ID" class="btn btn-warning">Güncelle</a>
+        </td>
+    </tr>
+        }
+
+    </table>
+</div>
+<div style="padding-left: 80px">
+    <a href="/HastaTakip/HastaEkle/" class="btn btn-primary">Yeni Hasta Ekle</a>
+</div>
+

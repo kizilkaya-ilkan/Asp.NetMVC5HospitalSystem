@@ -1,0 +1,22 @@
+﻿@model Hospital.Models.Entity.IlacListe
+
+@{
+    ViewBag.Title = "EkleIlac";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="u-form-group" method="post">
+    <div style="padding-left:80px;padding-top:20px">
+
+        @Html.HiddenFor(p => p.ID, new { @class = "form-control" })
+        <label>Ürün Adı</label>
+        @Html.TextBoxFor(p => p.UrunAdi, new { @class = "form-control" })
+
+        <div style="padding-top:10px"></div>
+        <button class="btn btn-info" id="Btn">
+            Bölüm Ekle
+        </button>
+    </div>
+
+</form>
+

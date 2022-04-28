@@ -1,0 +1,53 @@
+﻿@using Hospital.Models.Entity
+@model List<Users>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Doctor.cshtml";
+}
+<div align="center"><p><h3>Yozgat Bozok Üniversitesi Doktor Paneli</h3></p> </div>
+
+@foreach (var ktg in Model)
+{
+    <div align="center"><p><h3>Hoş Geldiniz Sayın @ktg.AD @ktg.SOYAD </h3></p> </div>
+    <div style="padding-left:60px">
+        <div class="card">
+            <div class="card-body">
+                <p class="text-uppercase small mb-2">
+                    <strong>Bölüm</strong>
+                </p>
+                <h5 class="mb-0">
+                    <strong>  @ktg.BÖLÜM</strong>
+                    <small class="text-success ms-2">
+                    </small>
+                </h5>
+                <hr />
+            </div>
+            <div class="card-body">
+                <p class="text-uppercase small mb-2">
+                    <strong>Görevi</strong>
+                </p>
+                <h5 class="mb-0">
+                    <strong>  @ktg.GÖREVİ</strong>
+                    <small class="text-success ms-2">
+
+                    </small>
+                </h5>
+                <hr />
+            </div>
+            <div class="card-body">
+                <p class="text-uppercase small mb-2">
+                    <strong>Mail Adresi</strong>
+                </p>
+                <h5 class="mb-0">
+                    <strong>  @ktg.ADRES</strong>
+                    <small class="text-success ms-2">
+
+                    </small>
+                </h5>
+                <hr />
+            </div>
+        </div>
+    </div>
+}
+

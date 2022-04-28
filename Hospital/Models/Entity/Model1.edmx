@@ -1,0 +1,696 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBHospitalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Eposta" Type="nvarchar(max)" />
+          <Property Name="Ad" Type="nvarchar(max)" />
+          <Property Name="Soyad" Type="nvarchar(max)" />
+          <Property Name="Sifre" Type="nvarchar(max)" />
+          <Property Name="Onay" Type="bit" Nullable="false" />
+          <Property Name="Yetki" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Birimler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BölümAdi" Type="varchar(max)" Nullable="false" />
+          <Property Name="PersonelSayisi" Type="int" Nullable="false" />
+          <Property Name="Açıklama" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BunlarıBiliyormusunuz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Acıklama" Type="varchar(max)" Nullable="false" />
+          <Property Name="SiteAcıklama" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DEPO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="URUNADI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="URUNACIKLAMASI" Type="nvarchar(max)" />
+          <Property Name="STOK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DURUM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="TOTALHASTASAYISI" Type="bigint" Nullable="false" />
+          <Property Name="İPTALEDİLENRANDEVU" Type="bigint" Nullable="false" />
+          <Property Name="TEDAVİEDİLENHASTASAYISI" Type="bigint" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DURUM2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="BÖLÜM" Type="varchar(max)" Nullable="false" />
+          <Property Name="DOKTORISMI" Type="varchar(max)" Nullable="false" />
+          <Property Name="HASTAKABULSAYISI" Type="int" Nullable="false" />
+          <Property Name="IPTALRANDAVUSAYISI" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IlacListe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunAdi" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mesaj">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HASTA" Type="varchar" MaxLength="50" />
+          <Property Name="GÖNDEREN" Type="varchar" MaxLength="50" />
+          <Property Name="ALICI" Type="varchar" MaxLength="50" />
+          <Property Name="KONU" Type="varchar" MaxLength="50" />
+          <Property Name="TARIH" Type="smalldatetime" />
+          <Property Name="MESAJ" Type="varchar" MaxLength="250" />
+          <Property Name="ISLEM" Type="varchar(max)" />
+          <Property Name="Sonuc" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="varchar(max)" Nullable="false" />
+          <Property Name="SOYAD" Type="varchar(max)" Nullable="false" />
+          <Property Name="TCNO" Type="varchar(max)" Nullable="false" />
+          <Property Name="Anahtar" Type="varchar(max)" Nullable="false" />
+          <Property Name="YETKİ" Type="varchar(max)" Nullable="false" />
+          <Property Name="MAILADRESI" Type="varchar(max)" Nullable="false" />
+          <Property Name="ADRES" Type="varchar(max)" Nullable="false" />
+          <Property Name="TELNO" Type="varchar(max)" Nullable="false" />
+          <Property Name="RANDAVUTARIHIGUN" Type="date" />
+          <Property Name="RANDAVUTARIHISAAT" Type="time" Precision="7" />
+          <Property Name="MuayeneSonucu" Type="int" />
+        </EntityType>
+        <EntityType Name="RECETE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ILAC" Type="varchar(max)" Nullable="false" />
+          <Property Name="TARIH" Type="datetime" Nullable="false" />
+          <Property Name="DOKTOR" Type="varchar(max)" Nullable="false" />
+          <Property Name="RECETENO" Type="int" />
+          <Property Name="HASTA" Type="varchar(max)" Nullable="false" />
+          <Property Name="MAİLADRES" Type="varchar(max)" Nullable="false" />
+          <Property Name="HASTATC" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tCalendar">
+          <Key>
+            <PropertyRef Name="IDCalendar" />
+          </Key>
+          <Property Name="IDCalendar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="AllDay" Type="bit" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Birim" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UrunList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunADI" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="SOYAD" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="BÖLÜM" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="YETKİDERECE" Type="int" />
+          <Property Name="ANAHTAR" Type="int" Nullable="false" />
+          <Property Name="GÖREVİ" Type="varchar(max)" />
+          <Property Name="TELNO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TCNO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ADRES" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TİP" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="USERTIP">
+          <Key>
+            <PropertyRef Name="TIPID" />
+          </Key>
+          <Property Name="TIPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIPAD" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Yoklama">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Bölüm" Type="varchar(max)" />
+          <Property Name="Personel" Type="varchar(max)" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="izinSayisi" Type="int" />
+        </EntityType>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="DBHospitalModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Birimler" EntityType="Self.Birimler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BunlarıBiliyormusunuz" EntityType="Self.BunlarıBiliyormusunuz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEPO" EntityType="Self.DEPO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DURUM" EntityType="Self.DURUM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DURUM2" EntityType="Self.DURUM2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IlacListe" EntityType="Self.IlacListe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesaj" EntityType="Self.Mesaj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RECETE" EntityType="Self.RECETE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tCalendar" EntityType="Self.tCalendar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UrunList" EntityType="Self.UrunList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERTIP" EntityType="Self.USERTIP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yoklama" EntityType="Self.Yoklama" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBHospitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Birimler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BölümAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PersonelSayisi" Type="Int32" Nullable="false" />
+          <Property Name="Açıklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DEPO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="URUNADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STOK" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="URUNACIKLAMASI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DURUM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="TOTALHASTASAYISI" Type="Int64" Nullable="false" />
+          <Property Name="İPTALEDİLENRANDEVU" Type="Int64" Nullable="false" />
+          <Property Name="TEDAVİEDİLENHASTASAYISI" Type="Int64" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="DURUM2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="BÖLÜM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOKTORISMI" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HASTAKABULSAYISI" Type="Int32" Nullable="false" />
+          <Property Name="IPTALRANDAVUSAYISI" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Mesaj">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HASTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GÖNDEREN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ALICI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KONU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TARIH" Type="DateTime" Precision="0" />
+          <Property Name="MESAJ1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ISLEM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sonuc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SOYAD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TCNO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Anahtar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="YETKİ" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MAILADRESI" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADRES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELNO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RANDAVUTARIHIGUN" Type="DateTime" Precision="0" />
+          <Property Name="RANDAVUTARIHISAAT" Type="Time" Precision="7" />
+          <Property Name="MuayeneSonucu" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RECETE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ILAC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TARIH" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DOKTOR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RECETENO" Type="Int32" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HASTA" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MAİLADRES" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HASTATC" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SOYAD" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BÖLÜM" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="YETKİDERECE" Type="Int32" />
+          <Property Name="ANAHTAR" Type="Int32" Nullable="false" />
+          <Property Name="GÖREVİ" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TELNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TCNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADRES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TİP" Type="Byte" />
+        </EntityType>
+        <EntityType Name="Yoklama">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Bölüm" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Personel" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="izinSayisi" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="DBHospitalEntities7" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Birimler" EntityType="Self.Birimler" />
+          <EntitySet Name="DEPO" EntityType="Self.DEPO" />
+          <EntitySet Name="DURUM" EntityType="Self.DURUM" />
+          <EntitySet Name="DURUM2" EntityType="Self.DURUM2" />
+          <EntitySet Name="Mesaj" EntityType="Self.Mesaj" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" />
+          <EntitySet Name="RECETE" EntityType="Self.RECETE" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Yoklama" EntityType="Self.Yoklama" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DBHospitalModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DBHospitalModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="USERTIP" EntityType="DBHospitalModel.USERTIP" />
+          <EntitySet Name="UrunList" EntityType="DBHospitalModel.UrunList" />
+          <EntitySet Name="IlacListe" EntityType="DBHospitalModel.IlacListe" />
+          <EntitySet Name="BunlarıBiliyormusunuz" EntityType="DBHospitalModel.BunlarıBiliyormusunuz" />
+          <EntitySet Name="Admin" EntityType="DBHospitalModel.Admin" />
+          <EntitySet Name="tCalendar" EntityType="DBHospitalModel.tCalendar" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="USERTIP">
+          <Key>
+            <PropertyRef Name="TIPID" />
+          </Key>
+          <Property Name="TIPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPAD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UrunList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="IlacListe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BunlarıBiliyormusunuz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Acıklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SiteAcıklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Eposta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Onay" Type="Boolean" Nullable="false" />
+          <Property Name="Yetki" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tCalendar">
+          <Key>
+            <PropertyRef Name="IDCalendar" />
+          </Key>
+          <Property Name="IDCalendar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AllDay" Type="Boolean" Nullable="false" />
+          <Property Name="Birim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBHospitalModelStoreContainer" CdmEntityContainer="DBHospitalEntities7">
+          <EntitySetMapping Name="Birimler">
+            <EntityTypeMapping TypeName="DBHospitalModel.Birimler">
+              <MappingFragment StoreEntitySet="Birimler">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BölümAdi" ColumnName="BölümAdi" />
+                <ScalarProperty Name="PersonelSayisi" ColumnName="PersonelSayisi" />
+                <ScalarProperty Name="Açıklama" ColumnName="Açıklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEPO">
+            <EntityTypeMapping TypeName="DBHospitalModel.DEPO">
+              <MappingFragment StoreEntitySet="DEPO">
+                <ScalarProperty Name="URUNACIKLAMASI" ColumnName="URUNACIKLAMASI" />
+                <ScalarProperty Name="URUNADI" ColumnName="URUNADI" />
+                <ScalarProperty Name="STOK" ColumnName="STOK" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DURUM">
+            <EntityTypeMapping TypeName="DBHospitalModel.DURUM">
+              <MappingFragment StoreEntitySet="DURUM">
+                <ScalarProperty Name="TOTALHASTASAYISI" ColumnName="TOTALHASTASAYISI" />
+                <ScalarProperty Name="İPTALEDİLENRANDEVU" ColumnName="İPTALEDİLENRANDEVU" />
+                <ScalarProperty Name="TEDAVİEDİLENHASTASAYISI" ColumnName="TEDAVİEDİLENHASTASAYISI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DURUM2">
+            <EntityTypeMapping TypeName="DBHospitalModel.DURUM2">
+              <MappingFragment StoreEntitySet="DURUM2">
+                <ScalarProperty Name="BÖLÜM" ColumnName="BÖLÜM" />
+                <ScalarProperty Name="DOKTORISMI" ColumnName="DOKTORISMI" />
+                <ScalarProperty Name="HASTAKABULSAYISI" ColumnName="HASTAKABULSAYISI" />
+                <ScalarProperty Name="IPTALRANDAVUSAYISI" ColumnName="IPTALRANDAVUSAYISI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesaj">
+            <EntityTypeMapping TypeName="DBHospitalModel.Mesaj">
+              <MappingFragment StoreEntitySet="Mesaj">
+                <ScalarProperty Name="Sonuc" ColumnName="Sonuc" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HASTA" ColumnName="HASTA" />
+                <ScalarProperty Name="GÖNDEREN" ColumnName="GÖNDEREN" />
+                <ScalarProperty Name="ALICI" ColumnName="ALICI" />
+                <ScalarProperty Name="KONU" ColumnName="KONU" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="MESAJ1" ColumnName="MESAJ" />
+                <ScalarProperty Name="ISLEM" ColumnName="ISLEM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patient">
+            <EntityTypeMapping TypeName="DBHospitalModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+                <ScalarProperty Name="TCNO" ColumnName="TCNO" />
+                <ScalarProperty Name="Anahtar" ColumnName="Anahtar" />
+                <ScalarProperty Name="YETKİ" ColumnName="YETKİ" />
+                <ScalarProperty Name="MAILADRESI" ColumnName="MAILADRESI" />
+                <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+                <ScalarProperty Name="TELNO" ColumnName="TELNO" />
+                <ScalarProperty Name="RANDAVUTARIHIGUN" ColumnName="RANDAVUTARIHIGUN" />
+                <ScalarProperty Name="RANDAVUTARIHISAAT" ColumnName="RANDAVUTARIHISAAT" />
+                <ScalarProperty Name="MuayeneSonucu" ColumnName="MuayeneSonucu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RECETE">
+            <EntityTypeMapping TypeName="DBHospitalModel.RECETE">
+              <MappingFragment StoreEntitySet="RECETE">
+                <ScalarProperty Name="HASTATC" ColumnName="HASTATC" />
+                <ScalarProperty Name="MAİLADRES" ColumnName="MAİLADRES" />
+                <ScalarProperty Name="HASTA" ColumnName="HASTA" />
+                <ScalarProperty Name="ILAC" ColumnName="ILAC" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="DOKTOR" ColumnName="DOKTOR" />
+                <ScalarProperty Name="RECETENO" ColumnName="RECETENO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBHospitalModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DBHospitalModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="TİP" ColumnName="TİP" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+                <ScalarProperty Name="BÖLÜM" ColumnName="BÖLÜM" />
+                <ScalarProperty Name="YETKİDERECE" ColumnName="YETKİDERECE" />
+                <ScalarProperty Name="ANAHTAR" ColumnName="ANAHTAR" />
+                <ScalarProperty Name="GÖREVİ" ColumnName="GÖREVİ" />
+                <ScalarProperty Name="TELNO" ColumnName="TELNO" />
+                <ScalarProperty Name="TCNO" ColumnName="TCNO" />
+                <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yoklama">
+            <EntityTypeMapping TypeName="DBHospitalModel.Yoklama">
+              <MappingFragment StoreEntitySet="Yoklama">
+                <ScalarProperty Name="Bölüm" ColumnName="Bölüm" />
+                <ScalarProperty Name="Personel" ColumnName="Personel" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="izinSayisi" ColumnName="izinSayisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DBHospitalModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DBHospitalModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DBHospitalModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DBHospitalModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBHospitalModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DBHospitalModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBHospitalModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DBHospitalModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DBHospitalModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="USERTIP">
+            <EntityTypeMapping TypeName="DBHospitalModel.USERTIP">
+              <MappingFragment StoreEntitySet="USERTIP">
+                <ScalarProperty Name="TIPAD" ColumnName="TIPAD" />
+                <ScalarProperty Name="TIPID" ColumnName="TIPID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UrunList">
+            <EntityTypeMapping TypeName="DBHospitalModel.UrunList">
+              <MappingFragment StoreEntitySet="UrunList">
+                <ScalarProperty Name="UrunADI" ColumnName="UrunADI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IlacListe">
+            <EntityTypeMapping TypeName="DBHospitalModel.IlacListe">
+              <MappingFragment StoreEntitySet="IlacListe">
+                <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BunlarıBiliyormusunuz">
+            <EntityTypeMapping TypeName="DBHospitalModel.BunlarıBiliyormusunuz">
+              <MappingFragment StoreEntitySet="BunlarıBiliyormusunuz">
+                <ScalarProperty Name="SiteAcıklama" ColumnName="SiteAcıklama" />
+                <ScalarProperty Name="Acıklama" ColumnName="Acıklama" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="DBHospitalModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
+                <ScalarProperty Name="Onay" ColumnName="Onay" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Eposta" ColumnName="Eposta" />
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tCalendar">
+            <EntityTypeMapping TypeName="DBHospitalModel.tCalendar">
+              <MappingFragment StoreEntitySet="tCalendar">
+                <ScalarProperty Name="Birim" ColumnName="Birim" />
+                <ScalarProperty Name="AllDay" ColumnName="AllDay" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IDCalendar" ColumnName="IDCalendar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

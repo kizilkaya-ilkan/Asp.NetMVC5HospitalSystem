@@ -1,0 +1,15 @@
+﻿@using Hospital.Models.Entity
+@model List<Users>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Lab.cshtml";
+}
+
+<div align="center"><p><h3>Yozgat Bozok Üniversitesi Laboratuvar Paneli</h3></p> </div>
+
+@foreach (var c in Model)
+{
+    <div align="center"><p><h3>Hoş Geldiniz Sayın @c.AD @c.SOYAD </h3></p> </div>
+
+}

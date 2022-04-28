@@ -1,0 +1,44 @@
+﻿@using Hospital.Models.Entity
+@model List<Mesaj>
+@{
+    ViewBag.Title = "TestAnasayfa";
+    Layout = "~/Views/Shared/Lab.cshtml";
+}
+
+<div style="padding-left:80px;padding-top:20px">
+    <h2>Gelen Rapor</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>Gönderen</th>
+            <th>Hasta</th>
+            <th>Konu</th>
+            <th>Mesaj</th>
+            <th>Tarih</th>
+            <th>Rapor Durum</th>
+            <th>Döküman</th>
+        </tr>
+        @foreach (var ktg in Model)
+        {
+            <tr>
+                <td>@ktg.GÖNDEREN</td>
+                <td>@ktg.HASTA</td>
+                <td>@ktg.KONU</td>
+                <td>@ktg.MESAJ1</td>
+                <td>@ktg.TARIH</td>
+                <td>@ktg.ISLEM</td>
+                <td>@ktg.Sonuc</td>
+
+                <td align="center">
+                    <a href="/lab/TestSil/@ktg.ID" class="btn btn-danger">Sil</a>
+                </td>
+                <td align="center">
+                    <a href="/lab/TestGetir/@ktg.ID" class="btn btn-info">Düzenle</a>
+                </td>
+            </tr>
+
+        }
+
+    </table>
+
+</div>
+

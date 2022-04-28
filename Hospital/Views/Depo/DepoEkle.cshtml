@@ -1,0 +1,25 @@
+﻿@model Hospital.Models.Entity.DEPO 
+@{
+    ViewBag.Title = "DepoEkle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="u-form-group" method="post">
+    <div style="padding-left:80px;padding-top:20px">
+
+        @Html.HiddenFor(p => p.ID, new { @class = "form-control" })
+        <label>Ürün Adı</label>
+        @Html.DropDownListFor(p => p.URUNADI, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+        <label>Ürün Açıklaması</label>
+        @Html.TextBoxFor(p => p.URUNACIKLAMASI, new { @class = "form-control" })
+        <label>Stok</label>
+        @Html.TextBoxFor(p => p.STOK, new { @class = "form-control" })
+
+        <div style="padding-top:10px"></div>
+        <button class="btn btn-info" id="Btn">
+            Bölüm Ekle
+        </button>
+    </div>
+
+</form>
+

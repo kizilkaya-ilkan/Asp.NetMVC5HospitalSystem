@@ -1,0 +1,27 @@
+﻿@model Hospital.Models.Entity.Birimler
+@{
+    ViewBag.Title = "BirimGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("BirimDüzenle", "birimler", FormMethod.Post))
+{
+    <form class="u-form-group" method="post">
+        <div style="padding-left:80px;padding-top:20px">
+
+            @Html.LabelFor(k => k.BölümAdi)
+            @Html.TextBoxFor(k => k.BölümAdi, new { @class = "form-control" })
+            @Html.LabelFor(k => k.PersonelSayisi)
+            @Html.TextBoxFor(k => k.PersonelSayisi, new { @class = "form-control" })
+            @Html.LabelFor(k => k.Açıklama)
+            @Html.TextBoxFor(k => k.Açıklama, new { @class = "form-control" })
+            <div style="padding-top:10px"></div>
+            <button class="btn btn-info" id="Btn">
+                Bölüm Düzenle
+            </button>
+        </div>
+
+    </form>
+}
+
+

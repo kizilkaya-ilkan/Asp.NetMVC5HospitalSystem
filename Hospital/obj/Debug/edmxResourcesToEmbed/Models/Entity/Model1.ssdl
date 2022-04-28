@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBHospitalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Eposta" Type="nvarchar(max)" />
+    <Property Name="Ad" Type="nvarchar(max)" />
+    <Property Name="Soyad" Type="nvarchar(max)" />
+    <Property Name="Sifre" Type="nvarchar(max)" />
+    <Property Name="Onay" Type="bit" Nullable="false" />
+    <Property Name="Yetki" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Birimler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BölümAdi" Type="varchar(max)" Nullable="false" />
+    <Property Name="PersonelSayisi" Type="int" Nullable="false" />
+    <Property Name="Açıklama" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BunlarıBiliyormusunuz">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Acıklama" Type="varchar(max)" Nullable="false" />
+    <Property Name="SiteAcıklama" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DEPO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="URUNADI" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="URUNACIKLAMASI" Type="nvarchar(max)" />
+    <Property Name="STOK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DURUM">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="TOTALHASTASAYISI" Type="bigint" Nullable="false" />
+    <Property Name="İPTALEDİLENRANDEVU" Type="bigint" Nullable="false" />
+    <Property Name="TEDAVİEDİLENHASTASAYISI" Type="bigint" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DURUM2">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="BÖLÜM" Type="varchar(max)" Nullable="false" />
+    <Property Name="DOKTORISMI" Type="varchar(max)" Nullable="false" />
+    <Property Name="HASTAKABULSAYISI" Type="int" Nullable="false" />
+    <Property Name="IPTALRANDAVUSAYISI" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IlacListe">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UrunAdi" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mesaj">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HASTA" Type="varchar" MaxLength="50" />
+    <Property Name="GÖNDEREN" Type="varchar" MaxLength="50" />
+    <Property Name="ALICI" Type="varchar" MaxLength="50" />
+    <Property Name="KONU" Type="varchar" MaxLength="50" />
+    <Property Name="TARIH" Type="smalldatetime" />
+    <Property Name="MESAJ" Type="varchar" MaxLength="250" />
+    <Property Name="ISLEM" Type="varchar(max)" />
+    <Property Name="Sonuc" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar(max)" Nullable="false" />
+    <Property Name="SOYAD" Type="varchar(max)" Nullable="false" />
+    <Property Name="TCNO" Type="varchar(max)" Nullable="false" />
+    <Property Name="Anahtar" Type="varchar(max)" Nullable="false" />
+    <Property Name="YETKİ" Type="varchar(max)" Nullable="false" />
+    <Property Name="MAILADRESI" Type="varchar(max)" Nullable="false" />
+    <Property Name="ADRES" Type="varchar(max)" Nullable="false" />
+    <Property Name="TELNO" Type="varchar(max)" Nullable="false" />
+    <Property Name="RANDAVUTARIHIGUN" Type="date" />
+    <Property Name="RANDAVUTARIHISAAT" Type="time" Precision="7" />
+    <Property Name="MuayeneSonucu" Type="int" />
+  </EntityType>
+  <EntityType Name="RECETE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ILAC" Type="varchar(max)" Nullable="false" />
+    <Property Name="TARIH" Type="datetime" Nullable="false" />
+    <Property Name="DOKTOR" Type="varchar(max)" Nullable="false" />
+    <Property Name="RECETENO" Type="int" />
+    <Property Name="HASTA" Type="varchar(max)" Nullable="false" />
+    <Property Name="MAİLADRES" Type="varchar(max)" Nullable="false" />
+    <Property Name="HASTATC" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tCalendar">
+    <Key>
+      <PropertyRef Name="IDCalendar" />
+    </Key>
+    <Property Name="IDCalendar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="Color" Type="nvarchar" MaxLength="50" />
+    <Property Name="AllDay" Type="bit" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Birim" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UrunList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UrunADI" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="SOYAD" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="BÖLÜM" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="YETKİDERECE" Type="int" />
+    <Property Name="ANAHTAR" Type="int" Nullable="false" />
+    <Property Name="GÖREVİ" Type="varchar(max)" />
+    <Property Name="TELNO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TCNO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ADRES" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TİP" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="USERTIP">
+    <Key>
+      <PropertyRef Name="TIPID" />
+    </Key>
+    <Property Name="TIPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TIPAD" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Yoklama">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Bölüm" Type="varchar(max)" />
+    <Property Name="Personel" Type="varchar(max)" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="izinSayisi" Type="int" />
+  </EntityType>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="DBHospitalModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Birimler" EntityType="Self.Birimler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BunlarıBiliyormusunuz" EntityType="Self.BunlarıBiliyormusunuz" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEPO" EntityType="Self.DEPO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DURUM" EntityType="Self.DURUM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DURUM2" EntityType="Self.DURUM2" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IlacListe" EntityType="Self.IlacListe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mesaj" EntityType="Self.Mesaj" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RECETE" EntityType="Self.RECETE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tCalendar" EntityType="Self.tCalendar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UrunList" EntityType="Self.UrunList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERTIP" EntityType="Self.USERTIP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yoklama" EntityType="Self.Yoklama" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

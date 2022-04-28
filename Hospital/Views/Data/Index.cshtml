@@ -1,0 +1,141 @@
+﻿@model Hospital.Models.Sayilar
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    &nbsp;
+    <script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	exportEnabled: true,
+	animationEnabled: true,
+	title: {
+		text: "Yozgat Bozok Üniversitesi Hastane Personel Eğitim Sistemi",
+		fontSize: 21
+	},
+	data: [{
+		type: "pie",
+		startAngle: 160,
+		toolTipContent: "<b>{label}</b>: {y}%",
+		indexLabel: "{label} - {y}%",
+		dataPoints: @Html.Raw(ViewBag.DataPoints)
+	 }]
+});
+chart.render();
+        }
+    </script>
+</head>
+<body>
+
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <div style="margin-top:30px"></div>
+    <div style="text-align:center">
+        <h3>Durum Raporları</h3>
+    </div>
+    <div style="margin-top:20px"></div>
+    <div style="margin-left:40px">
+        <div style="padding-left: 40px">
+            <div class="card">
+                <div class="card-body">
+                    <p class="text-uppercase small mb-2">
+                        <strong>Personel Sayısı</strong>
+                    </p>
+                    <h5 class="mb-0">
+                        <strong>  @Model.PersonelSayisi</strong>
+                        <small class="text-success ms-2">
+                        </small>
+                    </h5>
+                    <hr />
+                </div>
+                <div class="card-body">
+                    <p class="text-uppercase small mb-2">
+                        <strong>Hasta Sayısı</strong>
+                    </p>
+                    <h5 class="mb-0">
+                        <strong>  @Model.HastaSayisi</strong>
+                        <small class="text-success ms-2">
+
+                        </small>
+                    </h5>
+                    <hr />
+                </div>
+                <div class="card-body">
+                    <p class="text-uppercase small mb-2">
+                        <strong>Birim Sayisi</strong>
+                    </p>
+                    <h5 class="mb-0">
+                        <strong>  @Model.BirimSayisi</strong>
+                        <small class="text-success ms-2">
+
+                        </small>
+                    </h5>
+                    <hr />
+                </div>
+                <div class="card-body">
+                    <p class="text-uppercase small mb-2">
+                        <strong>Reçete Sayısı</strong>
+                    </p>
+                    <h5 class="mb-0">
+                        <strong>  @Model.ReceteSatisi</strong>
+                        <small class="text-success ms-2">
+
+                        </small>
+                    </h5>
+                    <hr />
+                </div>
+                <div class="card-body">
+                    <p class="text-uppercase small mb-2">
+                        <strong>Depo Ürün Miktarı</strong>
+                    </p>
+                    <h5 class="mb-0">
+                        <strong>  @Model.DepoMiktari</strong>
+                        <small class="text-success ms-2">
+
+                        </small>
+                    </h5>
+                    <hr />
+                </div>
+                <div class="card-body">
+                    <p class="text-uppercase small mb-2">
+                        <strong>Toplam Mesaj Sayisi</strong>
+                    </p>
+                    <h5 class="mb-0">
+                        <strong>  @Model.AtilanMesajSayisi</strong>
+                        <small class="text-success ms-2">
+
+                        </small>
+                    </h5>
+                    <hr />
+                </div>
+                <div class="card-body">
+                    <p class="text-uppercase small mb-2">
+                        <strong>Toplam İlaç Listesi</strong>
+                    </p>
+                    <h5 class="mb-0">
+                        <strong>  @Model.IlacListesi</strong>
+                        <small class="text-success ms-2">
+
+                        </small>
+                    </h5>
+                    <hr />
+                </div>
+            </div>
+        </div>
+        <div style=" padding-left:40px">
+            </p>
+            Yozgat Bozok Üniversitesi 2022 Sağlık MYO Eğitim Platformu
+            <p>
+
+
+        </div>
+</body>
+</html>
+

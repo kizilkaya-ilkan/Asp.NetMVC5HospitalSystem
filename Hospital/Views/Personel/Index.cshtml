@@ -1,0 +1,63 @@
+﻿@using Hospital.Models.Entity
+@model List<Users>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<div align="center" style="padding-left: 80px ">
+    <div style="padding-top:20px">
+        <h2>Hastane Personel Veritabanı </h2>
+    </div>
+
+    @using (Html.BeginForm("Index", "Personel", FormMethod.Get))
+     {
+        <div style="margin-bottom:15px; margin-top:15px; float:left">
+            <b>Aranacak İsim Adını Giriniz!</b> @Html.TextBox("p")
+            <input type="submit" value="Ara" />
+        </div>
+     }
+
+    <table class="table table-bordered" style="padding-top:40px">
+
+        <tr>
+            <th>ID</th>
+            <th>AD</th>
+            <th>SOYAD</th>
+            <th>BÖLÜM / Görevi </th>
+            <th>YETKİ DERECESİ</th>
+            <th>Sifre</th>
+            <th>GÖREVİ</th>
+            <th>TELNO</th>
+            <th>TC NO</th>
+            <th>MAİL ADRES</th>
+        </tr>
+
+        @foreach (var ktg in Model)
+        {
+    <tr>
+        <td>@ktg.ID</td>
+        <td>@ktg.AD</td>
+        <td>@ktg.SOYAD</td>
+        <td>@ktg.BÖLÜM</td>
+        <td>@ktg.YETKİDERECE</td>
+        <td>@ktg.ANAHTAR</td>
+        <td>@ktg.GÖREVİ</td>
+        <td>@ktg.TELNO</td>
+        <td>@ktg.TCNO</td>
+        <td>@ktg.ADRES</td>
+
+        <td align="center">
+            <a href="/Personel/PersonelSil/@ktg.ID" class="btn btn-danger">Sil</a>
+        </td>
+        <td align="center">
+            <a href="/Personel/PersonelGetir/@ktg.ID" class="btn btn-warning">Güncelle</a>
+        </td>
+    </tr>
+            }
+
+    </table>
+</div>
+<div style="padding-left: 80px">
+    <a href="/Personel/PersonelEkle/" class="btn btn-primary">Mesaj Ekle</a>
+</div>
+

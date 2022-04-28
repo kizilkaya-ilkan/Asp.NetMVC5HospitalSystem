@@ -1,0 +1,46 @@
+﻿@using Hospital.Models.Entity
+@model List<Users>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Doctor.cshtml";
+}
+
+<div align="center" style="padding-left: 80px ">
+    <div style="padding-top:20px">
+    </div>
+
+    <table class="table table-bordered" style="padding-top:40px">
+
+        <tr>
+
+            <th>ID</th>
+            <th>AD</th>
+            <th>SOYAD</th>
+            <th>SİFFE</th>
+            <th>TEL NO</th>
+            <th>MAİL ADRES</th>
+            <th>ISLEM</th>
+ 
+        </tr>
+
+        @foreach (var ktg in Model)
+        {
+            <tr>
+
+                <td>@ktg.ID</td>
+                <td>@ktg.AD</td>
+                <td>@ktg.SOYAD</td>
+                <td>@ktg.ANAHTAR</td>
+                <td>@ktg.TELNO</td>
+                <td>@ktg.ADRES</td>
+    
+
+                <td align="center">
+                    <a href="/Ayarlar/AyarGetir/@ktg.ID" class="btn btn-warning">Ayarları Güncelle</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
